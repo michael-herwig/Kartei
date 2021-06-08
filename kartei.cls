@@ -306,7 +306,9 @@
     \card@addsubsec{#1}
   \fi%
 }
-\colorlet{CardHead}{blue!80!black!50}
+
+\colorlet{CardHeadColor}{black}
+\newcommand{\CardHeadStyle}[1]{\color{CardHeadColor}\small #1}
 
 % CardHooks
 \newcommand{\card@fronthook}{\CardFrontImg}
@@ -327,9 +329,9 @@
   \fi%
   % Build Cover page before starting environment
   %
-\cohead{\color{CardHead}\theCardID}
-\lohead{\color{CardHead}\dasfach{#1}}
-\rohead{\color{CardHead}\derkommentar{#3}}
+\cohead{\CardHeadStyle{\theCardID}}
+\lohead{\CardHeadStyle{\dasfach{#1}}}
+\rohead{\CardHeadStyle{\derkommentar{#3}}}
 \thispagestyle{scrheadings}
 ~\vspace{2\baselineskip}\par{~\hfill \parbox[t]{.9\textwidth}{\centering \large #2}\hfill~}\vfill~
 \card@fronthook
@@ -339,9 +341,9 @@
 \card@backhook
 % Build a warning if the page is too full (forcing a pagebreak)
  % assure the next card starts on an odd page by doublepagebreak
-\cohead{\color{CardHead}{\bfseries Achtung:} R\"uckseite von \theCardID\ ist zu voll.}%
-\rohead{\color{CardHead}}%
-\lohead{\color{CardHead}}%
+\cohead{\color{CardHeadColor}{\bfseries Achtung:} R\"uckseite von \theCardID\ ist zu voll.}%
+\rohead{\color{CardHeadColor}}%
+\lohead{\color{CardHeadColor}}%
 	~\cleardoublepage
 }
 \newcommand{\card@printTOC}{
@@ -377,10 +379,10 @@
 \antwort{Antwort}
 \pagestyle{scrheadings}
 \clearscrheadings
-\lohead{\color{CardHead}Kartentitel}
-\cohead{\color{CardHead}\theCardID}
-\lehead{\color{CardHead}\theCardID}
-\cehead{\color{CardHead}\dieantwort}%
+\lohead{\CardHeadStyle{Kartentitel}}
+\cohead{\CardHeadStyle{\theCardID}}
+\lehead{\CardHeadStyle{\theCardID}}
+\cehead{\CardHeadStyle{\dieantwort}}%
 %
 % Border Definitions
 %
